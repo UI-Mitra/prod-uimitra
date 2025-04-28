@@ -1,9 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { 
-  Code, Database, Cloud, Brain, Smartphone, 
-  BarChart, Layout, Globe, ArrowRight, Server,
-  Layers, Zap, CheckCircle, Cpu, Monitor
+  Brush, Paintbrush, TrendingUp, Globe,
+  ArrowRight
 } from 'lucide-react';
 import AnimatedText from './AnimatedText';
 
@@ -11,7 +10,6 @@ interface Technology {
   name: string;
   description: string;
   icon: string;
-  features: string[];
 }
 
 interface TechnologyCategory {
@@ -24,211 +22,158 @@ interface TechnologyCategory {
 const TechnologiesPage: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.2 });
-  const [selectedCategory, setSelectedCategory] = useState<string>('Frontend');
-  const [selectedTech, setSelectedTech] = useState<Technology | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string>('UI/UX Design');
 
   const categories: TechnologyCategory[] = [
     {
-      name: 'Frontend',
-      icon: <Layout />,
-      description: 'Building beautiful, responsive user interfaces',
+      name: 'UI/UX Design',
+      icon: <Brush className="w-6 h-6" />,
+      description: 'Tools powering immersive designs & digital experiences',
       technologies: [
         {
-          name: 'React',
-          description: 'A JavaScript library for building user interfaces with reusable components and efficient state management.',
-          icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg',
-          features: [
-            'Component-Based Architecture',
-            'Virtual DOM',
-            'Rich Ecosystem',
-            'Strong Community Support'
-          ]
+          name: 'Figma',
+          description: 'Interface & interaction design for web and app layouts',
+          icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg'
         },
         {
-          name: 'Next.js',
-          description: 'The React framework for production that enables features like server-side rendering and static site generation.',
-          icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/nextjs/nextjs-original.svg',
-          features: [
-            'Server-Side Rendering',
-            'Static Site Generation',
-            'API Routes',
-            'Automatic Code Splitting'
-          ]
+          name: 'Adobe XD',
+          description: 'Rapid prototyping and wireframing made collaborative',
+          icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xd/xd-plain.svg'
         },
         {
-          name: 'TypeScript',
-          description: 'A typed superset of JavaScript that adds optional types, classes, and modules.',
-          icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg',
-          features: [
-            'Static Type Checking',
-            'Enhanced IDE Support',
-            'Early Error Detection',
-            'Better Code Organization'
-          ]
+          name: 'Sketch',
+          description: 'Design tool tailored for macOS — clean, scalable layouts',
+          icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sketch/sketch-original.svg'
+        },
+        {
+          name: 'Framer',
+          description: 'Interactive UI designs with built-in animation support',
+          icon: 'https://www.svgrepo.com/show/364527/framer-logo-fill.svg'
+        },
+        {
+          name: 'Midjourney',
+          description: 'AI-generated design ideas and creative concepts',
+          icon: 'https://upload.wikimedia.org/wikipedia/commons/1/10/Midjourney_Emblem_%E2%80%94_Discord.svg'
+        },
+        {
+          name: 'Zeplin',
+          description: 'Design collaboration tool converting designs into specs, assets, and code snippets',
+          icon: 'https://cdn.worldvectorlogo.com/logos/zeplin.svg'
+        },
+      ]
+    },
+    {
+      name: 'Brand Design',
+      icon: <Paintbrush className="w-6 h-6" />,
+      description: 'Tools helping us build powerful and lasting brand identities',
+      technologies: [
+        {
+          name: 'Adobe Illustrator',
+          description: 'Professional vector graphics for logos & icons',
+          icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-plain.svg'
+        },
+        {
+          name: 'Adobe Photoshop',
+          description: 'Advanced image editing and manipulation',
+          icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg'
+        },
+        {
+          name: 'CorelDRAW',
+          description: 'Advanced layout and illustration for brands',
+          icon: 'https://cdn.worldvectorlogo.com/logos/coreldraw.svg'
+        },
+        {
+          name: 'Canva Pro',
+          description: 'Quick creation of branded visuals and templates',
+          icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg'
+        },
+        {
+          name: 'Dribbble',
+          description: "World's leading platform for brand identity design inspiration and portfolios",
+          icon: 'https://cdn.worldvectorlogo.com/logos/dribbble-icon.svg'
+        },
+        {
+          name: 'Behance',
+          description: 'Showcase brand projects and gather feedback',
+          icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/behance/behance-original.svg'
         }
       ]
     },
     {
-      name: 'Backend',
-      icon: <Server />,
-      description: 'Powering applications with robust server-side solutions',
+      name: 'Digital Marketing',
+      icon: <TrendingUp className="w-6 h-6" />,
+      description: 'Smart tools that drive data-backed digital growth',
       technologies: [
         {
-          name: 'Node.js',
-          description: 'An asynchronous event-driven JavaScript runtime designed to build scalable network applications.',
-          icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg',
-          features: [
-            'Event-Driven Architecture',
-            'Non-Blocking I/O',
-            'Rich Package Ecosystem',
-            'Cross-Platform Support'
-          ]
+          name: 'Google Analytics',
+          description: 'Track visitor behavior and optimize strategy',
+          icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg'
         },
         {
-          name: 'Python',
-          description: 'A versatile programming language that emphasizes code readability with its notable use of significant whitespace.',
-          icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg',
-          features: [
-            'Easy to Learn and Read',
-            'Extensive Libraries',
-            'Cross-Platform',
-            'Strong Community'
-          ]
+          name: 'SEMrush',
+          description: 'SEO, PPC, and keyword insights for digital growth',
+          icon: 'https://www.semrush.com/favicon.ico'
         },
         {
-          name: 'Go',
-          description: 'A statically typed, compiled programming language designed at Google, known for its simplicity and efficiency.',
-          icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/go/go-original.svg',
-          features: [
-            'High Performance',
-            'Built-in Concurrency',
-            'Simple Syntax',
-            'Strong Standard Library'
-          ]
+          name: 'Mailchimp',
+          description: 'Automated, personalized email campaign builder',
+          icon: 'https://mailchimp.com/favicon.ico'
+        },
+        {
+          name: 'Ahrefs',
+          description: 'Comprehensive SEO and backlink analysis',
+          icon: 'https://ahrefs.com/favicon.ico'
+        },
+        {
+          name: 'Moz Pro',
+          description: 'SEO audits, link tracking, and competitor analysis',
+          icon: 'https://moz.com/favicon.ico'
+        },
+        {
+          name: 'Hotjar',
+          description: 'Visualize how users interact with your site via heatmaps',
+          icon: 'https://www.hotjar.com/favicon.ico'
         }
       ]
     },
     {
-      name: 'AI',
-      icon: <Brain />,
-      description: 'Implementing cutting-edge artificial intelligence solutions',
+      name: 'Social Media',
+      icon: <Globe className="w-6 h-6" />,
+      description: 'Boosting your social presence with high-impact tools',
       technologies: [
         {
-          name: 'TensorFlow',
-          description: 'An end-to-end open source platform for machine learning, developed by Google Brain.',
-          icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/tensorflow/tensorflow-original.svg',
-          features: [
-            'Deep Learning Support',
-            'Flexible Architecture',
-            'Production Ready',
-            'Hardware Acceleration'
-          ]
+          name: 'Buffer',
+          description: 'Plan and publish content across all major platforms',
+          icon: 'https://buffer.com/favicon.ico'
         },
         {
-          name: 'PyTorch',
-          description: 'An open source machine learning library developed by Facebook\'s AI Research lab.',
-          icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/pytorch/pytorch-original.svg',
-          features: [
-            'Dynamic Computational Graphs',
-            'Python Integration',
-            'Research Friendly',
-            'GPU Acceleration'
-          ]
-        }
-      ]
-    },
-    {
-      name: 'Mobile',
-      icon: <Smartphone />,
-      description: 'Creating seamless mobile experiences across platforms',
-      technologies: [
-        {
-          name: 'React Native',
-          description: 'A framework for building native mobile applications using React.',
-          icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg',
-          features: [
-            'Cross-Platform Development',
-            'Native Performance',
-            'Code Reusability',
-            'Hot Reloading'
-          ]
+          name: 'Hootsuite',
+          description: 'Monitor mentions, schedule posts, and analyze reach',
+          icon: 'https://hootsuite.com/favicon.ico'
         },
         {
-          name: 'Flutter',
-          description: 'Google\'s UI toolkit for building natively compiled applications.',
-          icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/flutter/flutter-original.svg',
-          features: [
-            'Single Codebase',
-            'Hot Reload',
-            'Native Performance',
-            'Rich Widget Library'
-          ]
-        }
-      ]
-    },
-    {
-      name: 'Database',
-      icon: <Database />,
-      description: 'Managing data with scalable and efficient solutions',
-      technologies: [
-        {
-          name: 'PostgreSQL',
-          description: 'A powerful, open source object-relational database system.',
-          icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg',
-          features: [
-            'ACID Compliance',
-            'JSON Support',
-            'Extensibility',
-            'Full-Text Search'
-          ]
+          name: 'YouTube Studio',
+          description: 'Optimize videos and analyze channel growth',
+          icon: 'https://www.youtube.com/favicon.ico'
         },
         {
-          name: 'MongoDB',
-          description: 'A document database designed for ease of development and scaling.',
-          icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg',
-          features: [
-            'Document Model',
-            'High Scalability',
-            'Flexible Schema',
-            'Rich Queries'
-          ]
-        }
-      ]
-    },
-    {
-      name: 'Cloud',
-      icon: <Cloud />,
-      description: 'Deploying and scaling applications in the cloud',
-      technologies: [
-        {
-          name: 'AWS',
-          description: 'Amazon Web Services, a comprehensive cloud computing platform.',
-          icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original.svg',
-          features: [
-            'Global Infrastructure',
-            'Extensive Services',
-            'Pay-as-you-go',
-            'High Availability'
-          ]
+          name: 'LinkedIn',
+          description: 'Target and reach professional audiences',
+          icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg'
         },
         {
-          name: 'Google Cloud',
-          description: 'Google\'s suite of cloud computing services.',
-          icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/googlecloud/googlecloud-original.svg',
-          features: [
-            'Machine Learning',
-            'Big Data',
-            'Kubernetes',
-            'Global Network'
-          ]
+          name: 'X (Twitter)',
+          description: 'Manage real-time Twitter activity and engagement',
+          icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/twitter/twitter-original.svg'
+        },
+        {
+          name: 'Meta Business Suite',
+          description: 'Instagram & Facebook management from one hub',
+          icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Meta_Platforms_Inc._logo.svg/1200px-Meta_Platforms_Inc._logo.svg.png'
         }
       ]
     }
   ];
-
-  const handleTechClick = (tech: Technology) => {
-    setSelectedTech(tech === selectedTech ? null : tech);
-  };
 
   return (
     <div className="min-h-screen pt-24 pb-20 relative overflow-hidden" ref={sectionRef}>
@@ -339,67 +284,64 @@ const TechnologiesPage: React.FC = () => {
                     >
                       {category.name} <AnimatedText text="Technologies" type="highlight" />
                     </motion.h2>
-                    <p className="text-dark/70">{category.description}</p>
+                    <motion.p 
+                      className="text-dark/70"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ duration: 0.6, delay: 0.2 }}
+                      viewport={{ once: true }}
+                    >
+                      {category.description}
+                    </motion.p>
                   </motion.div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {category.technologies.map((tech, index) => (
                       <motion.div
                         key={tech.name}
-                        className={`p-6 bg-white rounded-xl shadow-lg border transition-all duration-300 ${
-                          selectedTech?.name === tech.name 
-                            ? 'border-primary' 
-                            : 'border-primary/10'
-                        }`}
+                        className="p-6 bg-white rounded-xl shadow-lg border border-primary/10 transition-all duration-300"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
                         viewport={{ once: true }}
-                        onClick={() => handleTechClick(tech)}
-                        whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(237, 24, 79, 0.1)" }}
+                        whileHover={{ 
+                          y: -5, 
+                          boxShadow: "0 20px 40px rgba(237, 24, 79, 0.1)",
+                          scale: 1.02
+                        }}
                       >
-                        <div className="flex items-start gap-4 mb-4">
+                        <motion.div 
+                          className="flex items-center gap-4 mb-4"
+                          whileHover={{ x: 5 }}
+                        >
                           <motion.div 
-                            className="w-12 h-12 rounded-lg bg-primary/5 flex items-center justify-center"
-                            whileHover={{ scale: 1.1, rotate: 5 }}
+                            className="w-12 h-12 flex items-center justify-center"
+                            whileHover={{ 
+                              scale: 1.1, 
+                              rotate: 5
+                            }}
                           >
                             <img 
                               src={tech.icon} 
                               alt={tech.name} 
-                              className="w-8 h-8"
+                              className="w-8 h-8 object-contain"
                             />
                           </motion.div>
-                          <div>
-                            <h3 className="text-xl font-bold">{tech.name}</h3>
-                          </div>
-                        </div>
-
-                        <AnimatePresence>
-                          {selectedTech?.name === tech.name && (
-                            <motion.div
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ opacity: 1, height: "auto" }}
-                              exit={{ opacity: 0, height: 0 }}
-                              transition={{ duration: 0.3 }}
-                            >
-                              <p className="text-dark/70 mb-4">{tech.description}</p>
-                              <div className="space-y-2">
-                                {tech.features.map((feature, idx) => (
-                                  <motion.div
-                                    key={idx}
-                                    className="flex items-center gap-2 text-dark/70"
-                                    initial={{ opacity: 0, x: -20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: idx * 0.1 }}
-                                  >
-                                    <CheckCircle className="w-4 h-4 text-primary" />
-                                    {feature}
-                                  </motion.div>
-                                ))}
-                              </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
+                          <motion.h3 
+                            className="text-xl font-bold flex-1 text-left"
+                            whileHover={{ color: "var(--primary)" }}
+                          >
+                            {tech.name}
+                          </motion.h3>
+                        </motion.div>
+                        <motion.p 
+                          className="text-dark/70 text-left"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: 0.1 }}
+                        >
+                          {tech.description}
+                        </motion.p>
                       </motion.div>
                     ))}
                   </div>

@@ -24,11 +24,11 @@ const Footer: React.FC = () => {
     { name: 'Contact', href: '/contact' }
   ];
 
-  const solutions = [
-    { name: 'UI/UX & Graphic Design', href: '/services/brand-development' },
-    { name: 'Brand Design and Build', href: '/services/digital-marketing' },
-    { name: 'Digital Marketing', href: '/services/seo' },
-    { name: 'Social Media', href: '/services/social-media' }
+  const services = [
+    { name: 'UI/UX & Graphic Design', href: '/services/ui-ux-graphic-design' },
+    { name: 'Brand Design and Build', href: '/services/brand-design-build' },
+    { name: 'Digital Marketing Services', href: '/services/digital-marketing' },
+    { name: 'Social Media Services', href: '/services/social-media' }
   ];
 
   const contactInfo = {
@@ -47,25 +47,25 @@ const Footer: React.FC = () => {
       name: 'LinkedIn', 
       href: 'https://linkedin.com', 
       icon: <Linkedin size={20} />,
-      className: 'text-primary hover:text-[#0077B5] transition-colors duration-300'
+      className: 'text-primary hover:text-[#ffffff] transition-colors duration-300'
     },
     { 
       name: 'Twitter', 
       href: 'https://twitter.com', 
       icon: <Twitter size={20} />,
-      className: 'text-primary hover:text-[#1DA1F2] transition-colors duration-300'
+      className: 'text-primary hover:text-[#ffffff] transition-colors duration-300'
     },
     { 
       name: 'Facebook', 
       href: 'https://facebook.com', 
       icon: <Facebook size={20} />,
-      className: 'text-primary hover:text-[#1877F2] transition-colors duration-300'
+      className: 'text-primary hover:text-[#ffffff] transition-colors duration-300'
     },
     { 
       name: 'Instagram', 
       href: 'https://instagram.com', 
       icon: <Instagram size={20} />,
-      className: 'text-primary hover:text-[#E4405F] transition-colors duration-300'
+      className: 'text-primary hover:text-[#ffffff] transition-colors duration-300'
     }
   ];
 
@@ -180,7 +180,7 @@ const Footer: React.FC = () => {
             </ul>
           </motion.div>
 
-          {/* Solutions */}
+          {/* Services */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -188,7 +188,7 @@ const Footer: React.FC = () => {
             viewport={{ once: true }}
           >
             <h3 className="text-lg font-semibold mb-6 relative">
-              Solutions
+              Services
               <motion.span 
                 className="absolute -bottom-2 left-0 w-12 h-0.5 bg-primary"
                 initial={{ width: 0 }}
@@ -197,7 +197,7 @@ const Footer: React.FC = () => {
               />
             </h3>
             <ul className="space-y-3">
-              {solutions.map((solution, index) => (
+              {services.map((solution, index) => (
                 <motion.li
                   key={solution.name}
                   initial={{ opacity: 0, x: -20 }}
@@ -252,7 +252,7 @@ const Footer: React.FC = () => {
                 />
                 <motion.button
                   type="submit"
-                  className="absolute right-2 top-1/2 -translate-y-1/2 text-white p-2 rounded-md hover:text-primary transition-colors"
+                  className="absolute right-2 top-2 text-primary p-2 rounded-md hover:text-white transition-colors"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
                 >
